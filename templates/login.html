@@ -1,0 +1,79 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Login Page </title>  
+<style>   
+Body {  
+  font-family: Calibri, Helvetica, sans-serif;  
+  background-color:#ffffe6;
+} 
+ 
+h1{
+
+  text-shadow: 0 0 3px #FF0000;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+}
+button {   
+       background-color: black;   
+       width: 20%;  
+        color: white;   
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+         }   
+
+
+  
+ input[type=text], input[type=password] {   
+        width: 100%;   
+        margin: 8px 0;  
+        padding: 15px;   
+        display: inline-block;   
+        border: 2px solid green;   
+        box-sizing: border-box;   
+    }  
+ button:hover {   
+        opacity: 0.7;   
+    }   
+  .cancelbtn { 
+        color: red;  
+        width: auto;   
+        padding: 10px 18px;  
+        margin: 10px 5px;  
+        
+    }  
+     
+        
+     
+ .container {
+        margin: 30px 0;
+        width: 50%;   
+        padding: 25px;   
+        background-color: lightblue;
+          
+    }   
+</style>   
+</head>    
+<body>    
+    <center><h1>Biblophile Companion</h1><br> </center> 
+
+    <form action='login' method="POST"> <center> 
+        {% csrf_token%}
+        <div class="container">
+            <p><strong>Welcome Biblophiles!! </strong></p>     
+            <label>Username : </label>   
+            <input type="text" placeholder="Enter Username" name="username" required style="text-align:left">  
+            <label>Password : </label>   
+            <input type="password" placeholder="Enter Password" name="password" required>  
+            <button type="submit">Login</button>   
+     
+            <button type="button" class="cancelbtn"><center> Cancel</center></button>   
+              
+        </div> </center>  
+    </form>     
+</body>     
+</html>  
