@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page Title</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  padding: 70px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+}
+
+/* Increase the font size of the h1 element */
+.header h1 {
+  font-size: 40px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Bibliophile Companion</h1>
+  <p>A Friend to all the bibliophiles</p>
+  <a href="{% url 'home' %}">||Home</a>
+  <a href="{% url 'about' %}">||About</a>
+  <a href="{% url 'signup' %}">||Sign-up</a>
+  <a href="{% url 'login' %}">||Login</a>
+</div>
+
+<img src="books.jpg" alt="books Icon" style="width: 360px; height:330px;">
+
+<img src="image.jpg" alt="book Icon" style="width: 360px; height:330px;">
+
+<img src="pic.jpg" alt="pic Icon" style="width: 300px; height:330px;">
+
+<img src="book.jpg" alt="read Icon" style="width: 315px; height:330px;">
+<div>
+<p style="color:black;font-size:10px;text-align:right;">©️copyrights belong to BiblioDevelopers-SIH2020.</p>
+</div>
+
+</body>
+</html>
