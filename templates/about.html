@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
 <style>
 body, html {
   height: 100%;
@@ -15,7 +17,7 @@ body, html {
 
 .bg-image {
   /* The image used */
-  background-image: url("about.jpg");
+  
   
   /* Add the blur effect */
   filter: blur(2px);
@@ -48,7 +50,7 @@ body, html {
 }
 </style>
 </head>
-<body>
+<body style="background-image: url({% static 'about.jpg' %})">
 
 <div class="bg-image"></div>
 

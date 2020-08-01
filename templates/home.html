@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ {% load static %}
 <title>Page Title</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,13 +36,13 @@ body {
   <a href="{% url 'login' %}">||Login</a>
 </div>
 
-<img src="books.jpg" alt="books Icon" style="width: 360px; height:330px;">
+<img src="{% static 'books.jpg' %}" alt="books Icon" style="width: 360px; height:330px;">
 
-<img src="image.jpg" alt="book Icon" style="width: 360px; height:330px;">
+<img src="{% static 'image.jpg' %}" alt="book Icon" style="width: 360px; height:330px;">
 
-<img src="pic.jpg" alt="pic Icon" style="width: 300px; height:330px;">
+<img src="{% static 'pic.jpg' %}" alt="pic Icon" style="width: 300px; height:330px;">
 
-<img src="book.jpg" alt="read Icon" style="width: 315px; height:330px;">
+<img src="{% static 'book.jpg' %}" alt="read Icon" style="width: 315px; height:330px;">
 <div>
 <p style="color:black;font-size:10px;text-align:right;">©️copyrights belong to BiblioDevelopers-SIH2020.</p>
 </div>
