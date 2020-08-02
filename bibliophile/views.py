@@ -16,4 +16,8 @@ def signup(request):
 def about(request):
     return render(request,'about.html')
 
+def userPage(request):
+    return render(request, 'userPage.html')
+
+
 
