@@ -5,20 +5,22 @@
 <title> Login Page </title>  
 <style>   
 Body {  
-  font-family: Calibri, Helvetica, sans-serif;  
-  background-color:#ffffe6;
+  font-family: Candara, Helvetica, sans-serif;  
+  background-color:#d9b3ff;
+ 
 } 
  
 h1{
 
-  text-shadow: 0 0 3px #FF0000;
+  /* text-shadow: 0 0 3px #FF0000; */
+  font-family: candara, Helvetica, sans-serif;
   background-color: #ffffff;
   border: 1px solid black;
   opacity: 0.6;
 }
 button {   
        background-color: black;   
-       width: 20%;  
+       width: auto;  
         color: white;   
         padding: 15px;   
         margin: 10px 0px;   
@@ -33,7 +35,7 @@ button {
         margin: 8px 0;  
         padding: 15px;   
         display: inline-block;   
-        border: 2px solid green;   
+        border: 2px solid black;   
         box-sizing: border-box;   
     }  
  button:hover {   
@@ -51,20 +53,23 @@ button {
      
  .container {
         margin: 30px 0;
-        width: 50%;   
-        padding: 25px;   
-        background-color: lightblue;
+        width: 25%;   
+        padding: 50px;
+        border: 2px solid black;		
+        background-color: gray;
           
     }   
 </style>   
 </head>    
 <body>    
-    <center><h1>Biblophile Companion</h1><br> </center> 
+    <center><h1> Biblophile Companion </h1><br> </center>
+
+    <marquee bgcolor="ffccff">Welcome To Bibliophile Companion! You can highlight text from different sources and save them according to your requirement. </marquee>	
 
     <form action='login' method="POST"> <center> 
-        {% csrf_token%}
+         
         <div class="container">
-            <p><strong>Welcome Biblophiles!! </strong></p>     
+            <p style="font-family= verdana"> <strong> Welcome Biblophiles!! </strong></p>     
             <label>Username : </label>   
             <input type="text" placeholder="Enter Username" name="username" required style="text-align:left">  
             <label>Password : </label>   
