@@ -2,31 +2,25 @@
 <html>   
 <head>  
 <meta name="viewport" content="width=device-width, initial-scale=1">  
-{% load static %}
 <title> Login Page </title>  
-<!-- Javascript SDK-->
-
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
-<script src="{% static 'js/amazon-cognito-auth.min.js' %}"></script>
-<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
-<script src="{% static 'js/amazon-cognito-identity.min.js' %}"></script>
-<script src="{% static 'js/config.js' %}"></script> 
 <style>   
 Body {  
-  font-family: Calibri, Helvetica, sans-serif;  
-  background-color:#ffffe6;
+  font-family: Candara, Helvetica, sans-serif;  
+  background-color:#d9b3ff;
+ 
 } 
  
 h1{
 
-  text-shadow: 0 0 3px #FF0000;
+  /* text-shadow: 0 0 3px #FF0000; */
+  font-family: candara, Helvetica, sans-serif;
   background-color: #ffffff;
   border: 1px solid black;
   opacity: 0.6;
 }
 button {   
        background-color: black;   
-       width: 20%;  
+       width: auto;  
         color: white;   
         padding: 15px;   
         margin: 10px 0px;   
@@ -41,7 +35,7 @@ button {
         margin: 8px 0;  
         padding: 15px;   
         display: inline-block;   
-        border: 2px solid green;   
+        border: 2px solid black;   
         box-sizing: border-box;   
     }  
  button:hover {   
@@ -59,9 +53,10 @@ button {
      
  .container {
         margin: 30px 0;
-        width: 50%;   
-        padding: 25px;   
-        background-color: lightblue;
+        width: 25%;   
+        padding: 50px;
+        border: 2px solid black;		
+        background-color: gray;
           
     }   
 </style>   
@@ -76,43 +71,21 @@ button {
 
     </form>
 
+    <marquee bgcolor="ffccff">Welcome To Bibliophile Companion! You can highlight text from different sources and save them according to your requirement. </marquee>	
 
-<script>
-
-  function signInButton() {
-    
-	var authenticationData = {
-        Username : document.getElementById("inputUsername").value,
-        Password : document.getElementById("inputPassword").value,
-    };
-	
-    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
-    
-	var poolData = {
-        UserPoolId : _config.cognito.userPoolId, // Your user pool id here
-        ClientId : _config.cognito.clientId, // Your client id here
-    };
-	
-    var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-	
-    var userData = {
-        Username : document.getElementById("inputUsername").value,
-        Pool : userPool,
-    };
-	
-    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-    
-	cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: function (result) {
-			var accessToken = result.getAccessToken().getJwtToken();
-			console.log(accessToken);	
-        },
-
-        onFailure: function(err) {
-            alert(err.message || JSON.stringify(err));
-        },
-    });
-  }
-</script>
-</body>
-</html>
+    <form action='login' method="POST"> <center> 
+         
+        <div class="container">
+            <p style="font-family= verdana"> <strong> Welcome Biblophiles!! </strong></p>     
+            <label>Username : </label>   
+            <input type="text" placeholder="Enter Username" name="username" required style="text-align:left">  
+            <label>Password : </label>   
+            <input type="password" placeholder="Enter Password" name="password" required>  
+            <button type="submit">Login</button>   
+     
+            <button type="button" class="cancelbtn"><center> Cancel</center></button>   
+              
+        </div> </center>  
+    </form>     
+</body>     
+</html>  
