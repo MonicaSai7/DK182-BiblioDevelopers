@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+  {% load static %}
+<title>Registration Page</title>
+<link rel="icon" href="https://www.clker.com/cliparts/l/9/y/g/c/R/olivia-book.svg">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=100px; initial-scale=1;">
 <!-- Javascript SDK-->
-{% load static %}
+
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script src="{% static 'js/amazon-cognito-auth.min.js' %}"></script>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
@@ -13,24 +19,29 @@
   
 <style>
 body{
-  font-family: Calibri, Helvetica, sans-serif;
-  background-color: grey;
+  font-family: candara, Helvetica, sans-serif;
+  background-image: url('https://c8.alamy.com/comp/RWGHNW/lavender-flowers-seamless-pattern-vector-illustration-on-purple-background-for-textile-web-print-surface-design-RWGHNW.jpg');
 }
 .container {
     padding: 50px;
-  background-color: #1abc9c;
+	margin: 30px 0;
+	width: 70%;
+	background-color: gray;
+    opacity: .9;
 }
 
-input[type=text], input[type=password], textarea {
+input[type=personalname], input[type=password], input[type=email],textarea {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
   background: #f1f1f1;
+
 }
+h1 {text-align: center;}
 input[type=text]:focus, input[type=password]:focus {
-  background-color: white;
+  background-color: white ;
   outline: none;
 }
  div {
@@ -58,14 +69,25 @@ hr {
 </head>
 
 <body>
-  <h1 class="h3 mb-3 font-weight-normal" id="titleheader">Register an Account</h1>
+  <br>
+  <br>
+  <br>
+  <h1>
+  <center><b>Register your Account<b>
+  </center></h1>
+  <br>
+  <center>
+  <div class="container">
+  <hr>
   
-  <input type="personalname" class="form-control" id="personalnameRegister" placeholder="Name" pattern=".*" required>
-    <input type="email" class="form-control" id="emailInputRegister" placeholder="Email" pattern=".*" required>
+  <input type="personalname" class="form-control" id="personalnameRegister" placeholder="Name" pattern=".*" size=15 required>
+  <input type="email" class="form-control" id="emailInputRegister" placeholder="Email" pattern=".*" required>
+  
   <input type="password" class="form-control" id="passwordInputRegister" placeholder="Password" pattern=".*" required>
     <input type="password" class="form-control" id="confirmationpassword" placeholder="Confirm Password" pattern=".*" required>
-  <button id="mainbutton" class="btn btn-lg btn-primary btn-block" type="button" onclick="registerButton()" >Register</button>
-
+  <button id="mainbutton" class="btn btn-lg btn-primary btn-block" type="button" onclick="registerButton()"
+   style="background-color:green; border-color:green; color:white" >Register</button>
+   </center>
   <script>
 
     var username;
@@ -106,6 +128,21 @@ hr {
     var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
     var attributePersonalName = new AmazonCognitoIdentity.CognitoUserAttribute(dataPersonalName);
     
+    var bucketName = "sihbiblio";
+    var bucketRegion = "us-east-1";
+    var identityPoolId = "us-east-1:30d65ad0-e926-4ec2-9440-8eb16fbcab89";
+    
+    AWS.config.update({
+      accessKeyId:"AKIAJNXZ7MRJJJNB3MMA",
+      secretAccessKey:"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",
+      region:"us-east-1"
+    });
+    
+
+    var s3 = new AWS.S3({
+      apiVersion: '2006-03-01',
+      params: {Bucket: 'sihbiblio'}
+    });
     
     attributeList.push(attributeEmail);
     attributeList.push(attributePersonalName);
@@ -117,8 +154,20 @@ hr {
       }
       cognitoUser = result.user;
       console.log('user name is ' + cognitoUser.getUsername());
+      var cognitoID = result.userSub;
+      console.log(cognitoID);
+
+      var params = {Bucket: 'sihbiblio', Key: cognitoID+'/pic.jpg'}
+
+      s3.putObject(params, function(err, data) {
+        if (err) {
+          console.log(err, err.stack);
+        }
+        else 
+          console.log(data);
+      });
       //change elements of page
-      document.getElementById("titleheader").innerHTML = "Check your email for a verification link";
+      //window.location.replace("login")
       
     });
     }
@@ -128,5 +177,3 @@ hr {
  </body>
   
 </html>
-
-

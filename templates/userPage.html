@@ -3,13 +3,63 @@
   <head>
     {% load static %}
     <meta charset="utf-8">
-	 <!--Cognito JavaScript-->
+     <!--Cognito JavaScript-->
+     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
      <script src="{% static 'js/amazon-cognito-identity.min.js' %}"></script>
      <script src="{% static 'js/config.js' %}"></script> 
+
+     <style>
+
+        body {
+            margin: 0;
+            margin-top: 50px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        header {
+            display: flex;
+            position:relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            line-height: 50px;
+            background-color:gray;
+            font-family: candara, Helvetica, sans-serif;;
+        }
+        
+        header * {
+            display: inline;
+            height: 50px;
+        }
+        
+        
+        </style>
+
   </head>
 
   <body>
-	<div class="container">
+    <header>
+        <img src="https://image.shutterstock.com/image-vector/vector-illustration-purple-open-book-600w-1258108963.jpg" class="profile-img" width="60" height="60">
+            <div class="container"> 
+           <h1>
+          <span style="color: #cc99ff; align-self: center;">Welcome! </span> 
+          <button type="button" onclick="signOut()" >Sign out</button>
+         </h1>
+        </div> 
+            
+    </header>
+
+    <div>
+		<h4>Personal Information</h4>
+		<br>
+		<div>
+			<label>Email: </label>
+			<label id="email_value"></label>
+		</div>
+		
+    </div>
+	<!--<div class="container">
       <div>
         <h2>User Profile</h2>
 		<button type="button" onclick="signOut()">Sign out</button>
@@ -21,13 +71,13 @@
 		
 		<br>
 		<div>
-			<label>Email <span>(Username)</span></label>
+			<label>Email:</label>
 		</div>
 		<div>
 			<label id="email_value"></label>
 		</div>
 		
-    </div>
+    </div>-->
 
     <script>
 	var data = { 
@@ -51,10 +101,11 @@
 					console.log(err);
 					return;
 				}
-				console.log(result);
-				document.getElementById("email_value").innerHTML = result[2].getValue();	
+                console.log(result);
+                
+                document.getElementById("email_value").innerHTML = result[2].getValue();
 			});			
-			
+            
         });
     }
 }
